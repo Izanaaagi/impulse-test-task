@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: impulse-test-task-backend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - ${API_PORT}:${API_PORT}
+    command: npm run start:dev
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      impulse-test-task:
+  postgres:
+    container_name: impulse-test-task-postgres
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - pg-impulse-test-task:/var/lib/postgresql/data
+    restart: always
+    networks:
+      impulse-test-task:
+
+volumes:
+  pg-impulse-test-task:
+
+networks:
+  impulse-test-task:
