@@ -1,14 +1,20 @@
-# Project Installation Guide
+# Impulse Test Task
 
-## Required Dependencies
+## Installation
+
+### Prerequisites
 - Docker 19.03.0+
 
-## Steps to Run Project
-
-1. Copy the environment file:
-
-Example of `.env` file values:
-
+### Setup
+1. Clone the repository
+```shell
+git clone https://github.com/Izanaaagi/impulse-test-task.git
+```
+2. Copy the environment configuration file
+```shell
+cp .env.example .env
+```
+.env example:
 ```plaintext
 # Server
 NODE_ENV=dev
@@ -31,8 +37,12 @@ DB_AUTO_LOAD_MIGRATIONS=1
 
 # User Authentication Settings
 USER_JWT_SECRET_AT=qwaszxqwaszx
-USER_JWT_EXPIRES_AT=9999999
+USER_JWT_EXPIRES_AT=600
 USER_JWT_SECRET_RT=qwaszxqwaszxsss
-USER_JWT_EXPIRES_RT=9999999
+USER_JWT_EXPIRES_RT=18000
 PASSWORD_SALT_ROUNDS=10
+```
+3. Run the project
+```shell
+docker-compose up
 ```
