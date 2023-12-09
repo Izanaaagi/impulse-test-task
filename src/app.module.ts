@@ -4,6 +4,6 @@ import { BusinessLogicModule } from './modules/business-logic.module';
 import { DatabaseModule } from './common/database/database.module';
 
 @Module({
-  imports: [ConfigurationModule, BusinessLogicModule, DatabaseModule],
+  imports: [ConfigurationModule, DatabaseModule, BusinessLogicModule],
 })
 export class AppModule {}

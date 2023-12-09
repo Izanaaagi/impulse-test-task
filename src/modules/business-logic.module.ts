@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ConfigurationModule } from '../common/config/config.module';
+import { UsersModule } from './users/users.module';
+import { AuthenticationModule } from './authenticaiton/authentication.module';
 
 @Module({
-  imports: [],
+  imports: [UsersModule, AuthenticationModule],
 })
 export class BusinessLogicModule {}
